@@ -48,6 +48,12 @@ body {
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
+.title-icon {
+  height: 0.9em;
+  width: auto;
+  margin-right: 0.25em;
+  vertical-align: -0.1em;
+}
 .accent {
   background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
   -webkit-background-clip: text;
