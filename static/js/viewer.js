@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { applyFigureColors } from "./mesh-colors.js";
 import { OrbitControls } from "../vendor/three/OrbitControls.js";
 import { PLYLoader } from "../vendor/three/PLYLoader.js";
 
@@ -72,10 +73,13 @@ export function initViewer() {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0xf8fafc);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.NoToneMapping;
   container.replaceChildren(renderer.domElement);
   const scene = new THREE.Scene();
   const material = new THREE.MeshBasicMaterial({
     vertexColors: true,
+    toneMapped: false,
     side: THREE.DoubleSide,
   });
   const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 1000);
@@ -302,6 +306,7 @@ export function initViewer() {
       ]);
       if (current.signal.aborted || disposed) return false;
       const geometry = new PLYLoader().parse(buffer);
+      applyFigureColors(geometry);
       geometry.computeBoundingBox();
       geometry.computeBoundingSphere();
       if (mesh) {

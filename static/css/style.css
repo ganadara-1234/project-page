@@ -191,19 +191,19 @@ h4 {
   display: block;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
-  letter-spacing: -0.07em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 .title-dot {
   color: inherit;
 }
 .paper-sub {
   display: block;
-  margin: 25px 0 0;
+  margin: 14px 0 0;
   font-size: clamp(1.05rem, 2.4vw, 1.45rem);
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 .authors {
   font-size: 0.9rem;
@@ -822,7 +822,6 @@ footer small {
     display: none;
   }
   .paper-sub {
-    font-size: 1.23rem;
   }
   .hero-description {
     font-size: 0.86rem;
@@ -944,11 +943,11 @@ footer small {
 
 /* Preserve the original project identity. */
 .title-icon {
-  width: 0.82em;
-  height: 0.82em;
+  height: 0.9em;
+  width: auto;
   display: inline-block;
-  vertical-align: -0.02em;
-  margin-right: 0.14em;
+  margin-right: 0.25em;
+  vertical-align: -0.1em;
 }
 .top .eyebrow {
   display: inline-block;
