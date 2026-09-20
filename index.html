@@ -1,116 +1,766 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Co-GS SLAM: Geometrically and Photometrically Consistent Collaborative Multi-Agent 3D Gaussian Splatting SLAM With Pose-Dependent Gaussian Model">
-  <title>Co-GS SLAM</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="./static/css/style.css">
-</head>
-<body>
-
-<header class="top">
-  <div class="wrap">
-    <p class="venue">ICRA 2027 &middot; Under Review</p>
-
-    <h1 class="paper-title">
-      <img class="title-icon" src="./static/images/cogs.gif" alt="" aria-hidden="true"><span class="accent">Co-GS SLAM</span>:
-      <span class="paper-sub">Geometrically and Photometrically Consistent Collaborative Multi-Agent
-      3D Gaussian Splatting SLAM With Pose-Dependent Gaussian Model</span>
-    </h1>
-
-    <p class="authors">Anonymous Authors</p>
-
-    <nav class="links">
-      <span class="pill"><i class="fas fa-file-pdf"></i> Paper <em>Coming Soon</em></span>
-      <span class="pill"><i class="fas fa-scroll"></i> arXiv <em>Coming Soon</em></span>
-      <span class="pill"><i class="fab fa-youtube"></i> Video <em>Coming Soon</em></span>
-      <span class="pill"><i class="fab fa-github"></i> Code <em>Coming Soon</em></span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Co-GS SLAM: Collaborative Gaussian Splatting SLAM With a Pose-Dependent Gaussian Model. Consistent multi-agent mapping without a relative-pose prior."
+    />
+    <meta name="theme-color" content="#6366f1" />
+    <title>Co-GS SLAM · Collaborative Gaussian Splatting</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236366f1'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='sans-serif' font-size='38' fill='white'%3EC%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <script type="importmap">
+      { "imports": { "three": "./static/vendor/three/three.module.js" } }
+    </script>
+    <script src="./static/js/page.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#abstract">Skip to content</a>
+    <nav class="site-nav" aria-label="Page sections">
+      <a class="brand" href="#top">Co-GS <span>SLAM</span></a>
+      <div>
+        <a href="#method">Method</a><a href="#results">Results</a
+        ><a href="#explore">Explore in 3D ↗</a>
+      </div>
     </nav>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap wide">
-      <div class="slot ratio-16-9">Teaser video / figure</div>
-      <p class="caption"><b>Co-GS SLAM</b> — teaser caption goes here.</p>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <h2>Abstract</h2>
-      <p class="todo">Abstract goes here.</p>
-    </div>
-  </section>
-
-  <section class="block tint">
-    <div class="wrap">
-      <h2>Video</h2>
-      <div class="slot ratio-16-9">YouTube embed</div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <h2>Method</h2>
-      <div class="slot ratio-21-9">System overview figure</div>
-      <p class="todo">Pipeline description goes here.</p>
-
-      <div class="grid-2">
-        <article>
-          <h3>Pose-Dependent Gaussian Model</h3>
-          <div class="slot ratio-4-3">Figure</div>
-          <p class="todo">Description.</p>
-        </article>
-        <article>
-          <h3>Multi-Agent Map Fusion</h3>
-          <div class="slot ratio-4-3">Figure</div>
-          <p class="todo">Description.</p>
-        </article>
+    <header class="top" id="top">
+      <div class="wrap">
+        <p class="eyebrow">ICRA 2027 · Under review</p>
+        <h1>
+          <span class="project-name"
+            ><img
+              class="title-icon"
+              src="./static/images/cogs.gif"
+              alt=""
+              aria-hidden="true"
+            />Co-GS SLAM</span
+          ><span class="paper-sub"
+            >Collaborative Gaussian Splatting SLAM<br />With a Pose-Dependent
+            Gaussian Model</span
+          >
+        </h1>
+        <p class="authors">Anonymous Authors</p>
+        <p class="hero-description">
+          Multiple agents. One consistent map.<br />Jointly refining geometry,
+          appearance, and camera poses.
+        </p>
+        <div class="resource-links" aria-label="Project resources">
+          <span class="resource">Paper <small>Coming soon</small></span
+          ><span class="resource">Code <small>Coming soon</small></span
+          ><span class="resource">Dataset <small>Coming soon</small></span
+          ><a class="resource active" href="#video"
+            >Video <small>In production</small></a
+          >
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="block tint">
-    <div class="wrap">
-      <h2>Results</h2>
-
-      <h3>Collaborative Reconstruction</h3>
-      <div class="slot ratio-16-9">Multi-agent reconstruction video</div>
-
-      <h3>Rendering Quality Comparison</h3>
-      <div class="grid-2">
-        <figure><div class="slot ratio-4-3">Baseline</div><figcaption>Baseline</figcaption></figure>
-        <figure><div class="slot ratio-4-3">Ours</div><figcaption><b>Ours</b></figcaption></figure>
-      </div>
-
-      <h3>Tracking Accuracy</h3>
-      <div class="slot ratio-21-9">Quantitative table</div>
-    </div>
-  </section>
-
-  <!--
-  <section class="block">
-    <div class="wrap">
-      <h2>BibTeX</h2>
-      <pre><code>@inproceedings{cogsslam2027,
-  title     = {Co-GS SLAM: Geometrically and Photometrically Consistent Collaborative Multi-Agent 3D Gaussian Splatting SLAM With Pose-Dependent Gaussian Model},
-  author    = {Anonymous Authors},
-  booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
-  year      = {2027}
-}</code></pre>
-    </div>
-  </section>
-  -->
-</main>
-
-</body>
+    </header>
+    <main>
+      <section class="teaser wrap wide" aria-label="Project overview">
+        <figure>
+          <a
+            href="./static/images/paper/main.webp"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open full-size overview figure"
+            ><img
+              class="paper-figure"
+              src="./static/images/paper/main.webp"
+              width="2600"
+              height="1106"
+              fetchpriority="high"
+              alt="Co-GS SLAM overview on Dream 03: a merged three-agent mesh, input observations, and rendering comparisons against MAGiC-SLAM, CoKo-SLAM, and CoMA-SLAM."
+          /></a>
+          <figcaption>
+            Three agents, a shared scene, and a consistent reconstruction.
+            <strong>Co-GS SLAM</strong> preserves detail across agents’ views on
+            our real-world Dream 03 sequence.
+          </figcaption>
+        </figure>
+        <div class="highlights">
+          <div>
+            <strong>9<span>/10</span></strong>
+            <p>Sequences with lower ATE<br />than every baseline</p>
+          </div>
+          <div>
+            <strong>+4.7–9.4 <span>dB</span></strong>
+            <p>Real-world PSNR gain<br />over the best baseline per sequence</p>
+          </div>
+          <div>
+            <strong>1.7–40<span>×</span></strong>
+            <p>
+              Lower real-world trajectory error<br />than the best baseline per
+              sequence
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="abstract">
+        <div class="wrap wide">
+          <p class="eyebrow">The idea</p>
+          <h2>Consistency starts with the poses.</h2>
+          <h3 class="abstract-label">Abstract</h3>
+          <p class="abstract-text">
+            Collaborative 3D Gaussian splatting (3DGS) simultaneous localization
+            and mapping (SLAM) enables scalable mapping by merging the Gaussian
+            maps that multiple agents build. Typically, each agent runs 3DGS
+            SLAM on its own, and the server then merges their maps through a
+            pose graph with intra- and inter-agent loop closures. Although
+            recent methods achieve remarkable rendering quality, they still
+            suffer from two challenges in real-world deployment: (i) intra-agent
+            map inconsistency, caused by the inconsistent 3DGS SLAM of a single
+            agent, and (ii) inter-agent loop inaccuracy, caused by sensor noise
+            in the observations the loop closures between agents are estimated
+            from. To address these challenges, we present Co-GS SLAM, which
+            produces a geometrically and photometrically consistent merged map
+            without any prior on their relative pose. Specifically, our Co-GS
+            SLAM jointly optimizes the merged map and every agent's keyframe
+            poses with a Pose-Dependent (PD) Gaussian model that expresses each
+            Gaussian in the camera frame of its anchor keyframe. Extensive
+            experiments on ten multi-agent sequences from four datasets
+            (including our real-world in-house dataset) demonstrate the highest
+            rendering fidelity and a lower trajectory error than every baseline
+            on nine of the ten sequences, by 1.7× to 40× in trajectory error and
+            4.7 to 9.4 dB in PSNR on the real-world ones.
+          </p>
+        </div>
+      </section>
+      <section class="block tint" id="video">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">See it in motion</p>
+            <h2>Video</h2>
+            <p>A closer look at collaborative mapping and reconstruction.</p>
+          </div>
+          <div class="video-placeholder">
+            <span class="play-symbol" aria-hidden="true">▷</span
+            ><strong>Project video</strong
+            ><span>In production · Coming soon</span>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="method">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">How it works</p>
+            <h2>From local maps to a shared world.</h2>
+            <p>No prior on the agents’ relative poses is required.</p>
+          </div>
+          <figure class="figure-card">
+            <a
+              href="./static/images/paper/pipeline.webp"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open full-size pipeline figure"
+              ><img
+                loading="lazy"
+                class="paper-figure"
+                src="./static/images/paper/pipeline.webp"
+                alt="Pipeline: (a) single-agent 3DGS SLAM, (b) server-side loop closure and map merging, and (c) joint map and keyframe-pose optimization."
+            /></a>
+            <figcaption>
+              Each agent maps locally. The server aligns the submaps, then
+              jointly refines the merged map and every agent’s keyframe poses.
+            </figcaption>
+          </figure>
+          <div class="steps">
+            <article>
+              <span class="step-number">01 / LOCAL</span>
+              <h3>Build Gaussian submaps</h3>
+              <p>
+                Each agent tracks its RGB-D stream with frame-to-model G-ICP and
+                builds Gaussian submaps in its own reference frame.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">02 / MERGE</span>
+              <h3>Find a common frame</h3>
+              <p>
+                Intra- and inter-agent loop closures connect the submaps. Global
+                registration, G-ICP, and pose-graph optimization produce an
+                initial merged map.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">03 / REFINE</span>
+              <h3>Optimize map and poses</h3>
+              <p>
+                Pose-Dependent Gaussians couple the map to its anchor keyframes.
+                Rendering losses refine geometry, appearance, and camera poses
+                together.
+              </p>
+            </article>
+          </div>
+          <div class="pd-panel">
+            <div>
+              <p class="eyebrow">The key representation</p>
+              <h3>Gaussians that move<br />with their anchor poses.</h3>
+              <p>
+                Each Gaussian is expressed in the camera frame of the keyframe
+                that created it. Its world-frame position follows that anchor’s
+                current pose.
+              </p>
+              <p>
+                Rendering provides a <strong>self path</strong> to the viewing
+                pose and a <strong>cross path</strong> to the anchor poses,
+                correcting both drift within an agent’s map and misalignment
+                between agents.
+              </p>
+            </div>
+            <div>
+              <div class="pd-comparison">
+                <figure>
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/pd_world_comparison_wo_pd.webp"
+                    alt="Without PD: chair overlap in Aria room 0"
+                  />
+                  <figcaption>Without PD</figcaption>
+                </figure>
+                <figure>
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/pd_world_comparison_w_pd.webp"
+                    alt="With PD (ours): chair overlap in Aria room 0"
+                  />
+                  <figcaption>With PD (ours)</figcaption>
+                </figure>
+                <figure>
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/pd_world_comparison_gt.webp"
+                    alt="Ground truth: chair overlap in Aria room 0"
+                  />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+              <p class="caption">
+                Aria room 0 with injected inter-agent loop noise. The PD model
+                removes the double chair contours left by world-frame Gaussians.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="block tint" id="results">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">Measured in the real world</p>
+            <h2>Sharper maps. More accurate trajectories.</h2>
+            <p>Keyframe evaluation on TUM and our in-house RGB-D sequences.</p>
+          </div>
+          <div class="results-controls" hidden>
+            <label for="scene-select">Explore a sequence</label
+            ><select id="scene-select">
+              <option value="dream03">Dream 03 · 3 agents</option>
+              <option value="dream01">Dream 01 · 2 agents</option>
+              <option value="dream02">Dream 02 · 2 agents</option>
+              <option value="tum">TUM desk · 2 agents</option>
+            </select>
+          </div>
+          <div id="results-charts" class="chart-grid" aria-live="polite"></div>
+          <p class="chart-note" hidden>
+            Bar lengths use a linear scale from zero, shared across all
+            sequences for each metric. N/A indicates a failed run.
+          </p>
+          <details class="results-table" open>
+            <summary>All real-world results · exact values</summary>
+            <h4>TUM desk</h4>
+            <div class="table-scroll">
+              <table>
+                <caption>
+                  TUM desk: merged-map keyframe evaluation
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">PSNR ↑ (dB)</th>
+                    <th scope="col">ATE RMSE ↓ (cm)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th scope="row">CP-SLAM</th>
+                    <td>8.85</td>
+                    <td>70.02</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAGiC-SLAM</th>
+                    <td>15.37</td>
+                    <td>24.96</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAC-Ego3D</th>
+                    <td>17.19</td>
+                    <td>15.00</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoKo-SLAM</th>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoMA-SLAM</th>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">Proposed (map only)</th>
+                    <td>17.23</td>
+                    <td>4.24</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Co-GS SLAM (joint w/ PD)</th>
+                    <td>23.39</td>
+                    <td>2.11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4>Dream 01</h4>
+            <div class="table-scroll">
+              <table>
+                <caption>
+                  Dream 01: merged-map keyframe evaluation
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">PSNR ↑ (dB)</th>
+                    <th scope="col">ATE RMSE ↓ (cm)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th scope="row">CP-SLAM</th>
+                    <td>15.68</td>
+                    <td>11.23</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAGiC-SLAM</th>
+                    <td>23.79</td>
+                    <td>5.88</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAC-Ego3D</th>
+                    <td>25.15</td>
+                    <td>52.50</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoKo-SLAM</th>
+                    <td>23.11</td>
+                    <td>15.40</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoMA-SLAM</th>
+                    <td>23.87</td>
+                    <td>57.99</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">Proposed (map only)</th>
+                    <td>28.44</td>
+                    <td>5.21</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Co-GS SLAM (joint w/ PD)</th>
+                    <td>34.55</td>
+                    <td>3.39</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4>Dream 02</h4>
+            <div class="table-scroll">
+              <table>
+                <caption>
+                  Dream 02: merged-map keyframe evaluation
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">PSNR ↑ (dB)</th>
+                    <th scope="col">ATE RMSE ↓ (cm)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th scope="row">CP-SLAM</th>
+                    <td>16.72</td>
+                    <td>9.97</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAGiC-SLAM</th>
+                    <td>22.12</td>
+                    <td>13.59</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAC-Ego3D</th>
+                    <td>24.40</td>
+                    <td>156.50</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoKo-SLAM</th>
+                    <td>20.98</td>
+                    <td>38.80</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoMA-SLAM</th>
+                    <td>25.81</td>
+                    <td>122.23</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">Proposed (map only)</th>
+                    <td>29.25</td>
+                    <td>6.71</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Co-GS SLAM (joint w/ PD)</th>
+                    <td>34.93</td>
+                    <td>4.78</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4>Dream 03</h4>
+            <div class="table-scroll">
+              <table>
+                <caption>
+                  Dream 03: merged-map keyframe evaluation
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">PSNR ↑ (dB)</th>
+                    <th scope="col">ATE RMSE ↓ (cm)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th scope="row">CP-SLAM</th>
+                    <td>12.22</td>
+                    <td>199.31</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAGiC-SLAM</th>
+                    <td>23.72</td>
+                    <td>469.60</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">MAC-Ego3D</th>
+                    <td>23.39</td>
+                    <td>437.07</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoKo-SLAM</th>
+                    <td>25.20</td>
+                    <td>395.50</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">CoMA-SLAM</th>
+                    <td>25.57</td>
+                    <td>469.23</td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">Proposed (map only)</th>
+                    <td>26.97</td>
+                    <td>9.52</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Co-GS SLAM (joint w/ PD)</th>
+                    <td>30.26</td>
+                    <td>4.96</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+          <p class="source-note">
+            Values from the manuscript’s tracking and rendering tables. “Map
+            only” holds keyframe poses fixed; Co-GS SLAM jointly optimizes with
+            the PD model. Rendering is evaluated on keyframes, not held-out
+            novel views.
+          </p>
+          <div class="qualitative">
+            <h3>Consistent across agents’ views</h3>
+            <p>
+              The same Dream 01 scene, rendered at a keyframe from each agent.
+            </p>
+            <div class="comparison-scroll">
+              <div class="comparison-row">
+                <span class="agent-label">Agent 1</span>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a0_magic.webp"
+                    alt="Dream 01, agent 1: MAGiC-SLAM rendering"
+                  />
+                  <figcaption>MAGiC-SLAM</figcaption>
+                </figure>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a0_macego.webp"
+                    alt="Dream 01, agent 1: MAC-Ego3D rendering"
+                  />
+                  <figcaption>MAC-Ego3D</figcaption>
+                </figure>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a0_coko.webp"
+                    alt="Dream 01, agent 1: CoKo-SLAM rendering"
+                  />
+                  <figcaption>CoKo-SLAM</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a0_ours.webp"
+                    alt="Dream 01, agent 1: Co-GS SLAM rendering"
+                  />
+                  <figcaption>Co-GS SLAM</figcaption>
+                </figure>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a0_gt.webp"
+                    alt="Dream 01, agent 1: Ground truth rendering"
+                  />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+              <div class="comparison-row">
+                <span class="agent-label">Agent 2</span>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a1_magic.webp"
+                    alt="Dream 01, agent 2: MAGiC-SLAM rendering"
+                  />
+                  <figcaption>MAGiC-SLAM</figcaption>
+                </figure>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a1_macego.webp"
+                    alt="Dream 01, agent 2: MAC-Ego3D rendering"
+                  />
+                  <figcaption>MAC-Ego3D</figcaption>
+                </figure>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a1_coko.webp"
+                    alt="Dream 01, agent 2: CoKo-SLAM rendering"
+                  />
+                  <figcaption>CoKo-SLAM</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a1_ours.webp"
+                    alt="Dream 01, agent 2: Co-GS SLAM rendering"
+                  />
+                  <figcaption>Co-GS SLAM</figcaption>
+                </figure>
+                <figure class="">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/qual_a1_gt.webp"
+                    alt="Dream 01, agent 2: Ground truth rendering"
+                  />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+            </div>
+            <p class="caption">
+              Co-GS SLAM recovers the keyboard, monitor, and chair structure
+              where the baselines leave blur and duplicated surfaces.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="explore">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">A map you can explore</p>
+            <h2>Step inside Dream 03.</h2>
+            <p>
+              Explore the three-agent reconstructions from our main figure.
+              Select a method to compare its map in 3D.
+            </p>
+          </div>
+          <div class="viewer-layout">
+            <div class="viewer" id="mesh-viewer">
+              <img
+                class="mesh-poster"
+                src="./static/images/mesh-preview.webp"
+                alt="Preview of the Dream 03 reconstructed room mesh"
+                loading="lazy"
+              />
+              <div class="viewer-badge">
+                <strong id="viewer-method">Co-GS SLAM</strong
+                ><span>Dream 03 · 3 agents</span>
+              </div>
+              <div class="viewer-cover">
+                <button
+                  id="load-mesh"
+                  class="primary-button"
+                  type="button"
+                  hidden
+                >
+                  Retry 3D map
+                </button>
+                <p id="viewer-status" role="status">Loading Co-GS SLAM…</p>
+              </div>
+              <div
+                id="viewer-canvas"
+                tabindex="0"
+                role="region"
+                aria-label="Interactive Dream 03 map. Drag to rotate, scroll to zoom, right-drag to pan. Arrow keys rotate, plus and minus zoom, R resets."
+                hidden
+              ></div>
+            </div>
+            <aside class="mesh-methods" aria-label="Reconstruction methods">
+              <p class="eyebrow">Compare methods</p>
+              <button
+                type="button"
+                class="mesh-method"
+                data-method="ours"
+                data-poses="./static/models/dream03-ours-poses.json"
+                data-label="Co-GS SLAM"
+                data-mesh="./static/models/dream03.ply"
+                data-poster="./static/images/mesh-preview.webp"
+                aria-pressed="true"
+                aria-controls="mesh-viewer"
+              >
+                <img
+                  src="./static/images/mesh-preview.webp"
+                  alt=""
+                  loading="lazy"
+                /><span>Co-GS SLAM</span><small>Ours</small></button
+              ><button
+                type="button"
+                class="mesh-method"
+                data-method="magic"
+                data-poses="./static/models/dream03-magic-poses.json"
+                data-label="MAGiC-SLAM"
+                data-mesh="./static/models/dream03-magic.ply"
+                data-poster="./static/images/mesh-magic-preview.webp"
+                aria-pressed="false"
+                aria-controls="mesh-viewer"
+              >
+                <img
+                  src="./static/images/mesh-magic-preview.webp"
+                  alt=""
+                  loading="lazy"
+                /><span>MAGiC-SLAM</span></button
+              ><button
+                type="button"
+                class="mesh-method"
+                data-method="coko"
+                data-poses="./static/models/dream03-coko-poses.json"
+                data-label="CoKo-SLAM"
+                data-mesh="./static/models/dream03-coko.ply"
+                data-poster="./static/images/mesh-coko-preview.webp"
+                aria-pressed="false"
+                aria-controls="mesh-viewer"
+              >
+                <img
+                  src="./static/images/mesh-coko-preview.webp"
+                  alt=""
+                  loading="lazy"
+                /><span>CoKo-SLAM</span></button
+              ><button
+                type="button"
+                class="mesh-method"
+                data-method="coma"
+                data-poses="./static/models/dream03-coma-poses.json"
+                data-label="CoMA-SLAM"
+                data-mesh="./static/models/dream03-coma.ply"
+                data-poster="./static/images/mesh-coma-preview.webp"
+                aria-pressed="false"
+                aria-controls="mesh-viewer"
+              >
+                <img
+                  src="./static/images/mesh-coma-preview.webp"
+                  alt=""
+                  loading="lazy"
+                /><span>CoMA-SLAM</span>
+              </button>
+            </aside>
+          </div>
+          <div class="viewer-toolbar">
+            <p>Drag to rotate · Scroll / pinch to zoom · Right-drag to pan</p>
+            <div>
+              <button
+                id="toggle-poses"
+                type="button"
+                aria-pressed="true"
+                disabled
+              >
+                Poses</button
+              ><button id="reset-view" type="button" disabled>Reset view</button
+              ><button id="top-view" type="button" disabled>Top view</button
+              ><button
+                id="wireframe"
+                type="button"
+                aria-pressed="false"
+                disabled
+              >
+                Wireframe
+              </button>
+            </div>
+          </div>
+          <div
+            class="pose-legend"
+            role="group"
+            aria-label="Show or hide camera poses by agent"
+          >
+            <span>Camera poses</span>
+            <button type="button" data-agent="0" aria-pressed="true">
+              <i style="--agent-color: #d64fa8" aria-hidden="true"></i>Agent 1
+            </button>
+            <button type="button" data-agent="1" aria-pressed="true">
+              <i style="--agent-color: #2b7fe0" aria-hidden="true"></i>Agent 2
+            </button>
+            <button type="button" data-agent="2" aria-pressed="true">
+              <i style="--agent-color: #ffbe0b" aria-hidden="true"></i>Agent 3
+            </button>
+          </div>
+          <p class="caption">
+            Colored camera frusta show sampled keyframe poses from each method,
+            overlaid for visibility. A colored triangle mesh extracted from the
+            optimized Gaussian map. The full reconstructed mesh is shown,
+            including its original surfaces. Each method is fitted to the viewer
+            using the same initial viewing direction. This viewer displays
+            meshes, not live Gaussian rendering.
+          </p>
+          <noscript
+            ><p>
+              Enable JavaScript to explore the interactive map. The
+              reconstruction preview is shown above.
+            </p></noscript
+          >
+        </div>
+      </section>
+      <footer>
+        <div class="wrap">
+          <a class="brand" href="#top">Co-GS <span>SLAM</span></a>
+          <p>
+            Collaborative Gaussian Splatting SLAM<br />With a Pose-Dependent
+            Gaussian Model
+          </p>
+          <small
+            >ICRA 2027 submission · Paper, code, and in-house dataset coming
+            soon.</small
+          >
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
