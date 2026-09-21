@@ -26,7 +26,8 @@ Open http://localhost:8000. Use HTTP rather than opening `index.html` directly: 
 ## Editing
 
 - The video placeholder is in `#video`. Replace `.video-placeholder` with an embed or a `<video controls>` once the video is ready.
-- Paper, code, and dataset resources remain explicit “Coming soon” labels. Replace each with a real link when available.
+- Paper and code resources remain explicit “Coming soon” labels. Replace each with a real link when available.
+- The in-house dataset (`#dataset`) is described from `5.result.tex` (Dream 01–03, RealSense D455f, NOKOV motion capture). Each sequence card has a disabled `.download-button` span; replace it with `<a class="download-button" href="...">Download</a>` once the files are hosted.
 - Authors remain anonymous, matching the current manuscript and original page.
 - Charts animate once when scrolled into view and replay on sequence selection. Reduced-motion preferences disable the animation. Raw values always remain readable.
 - The 3D viewer loads Co-GS SLAM automatically on page load, without scrolling or clicking. The side panel switches between Co-GS SLAM, MAGiC-SLAM, CoKo-SLAM, and CoMA-SLAM. Each selected method shows its preview while its mesh loads (7.3–8.7 MB per mesh). Obsolete requests are aborted and the previous GPU geometry is disposed on replacement. Failed loads preserve the selected preview and offer retry; a WebGL context loss can also be retried. The canvas supports mouse/touch and keyboard (arrows, +/−, R). Loading does not move keyboard focus or scroll the page. Rendering occurs on interaction or resize instead of continuously.

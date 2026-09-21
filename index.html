@@ -25,7 +25,7 @@
       <a class="brand" href="#top">Co-GS <span>SLAM</span></a>
       <div>
         <a href="#method">Method</a><a href="#results">Results</a
-        ><a href="#explore">Explore in 3D ↗</a>
+        ><a href="#explore">Explore in 3D ↗</a><a href="#dataset">Dataset</a>
       </div>
     </nav>
     <header class="top" id="top">
@@ -52,7 +52,8 @@
         <div class="resource-links" aria-label="Project resources">
           <span class="resource">Paper <small>Coming soon</small></span
           ><span class="resource">Code <small>Coming soon</small></span
-          ><span class="resource">Dataset <small>Coming soon</small></span
+          ><a class="resource active" href="#dataset"
+            >Dataset <small>Coming soon</small></a
           ><a class="resource active" href="#video"
             >Video <small>In production</small></a
           >
@@ -748,6 +749,69 @@
           >
         </div>
       </section>
+      <section class="block tint" id="dataset">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">Open data</p>
+            <h2>The in-house multi-agent dataset.</h2>
+            <p>
+              Real-world RGB-D sequences with motion-capture ground truth, used
+              to evaluate Co-GS SLAM. We are releasing all three sequences.
+            </p>
+          </div>
+          <dl class="dataset-specs">
+            <div>
+              <dt>Sequences</dt>
+              <dd>3</dd>
+            </div>
+            <div>
+              <dt>Agents</dt>
+              <dd>2–3 <span>per sequence</span></dd>
+            </div>
+            <div>
+              <dt>Sensor</dt>
+              <dd>Intel RealSense D455f <span>RGB-D</span></dd>
+            </div>
+            <div>
+              <dt>Ground truth</dt>
+              <dd>NOKOV <span>motion capture</span></dd>
+            </div>
+          </dl>
+          <!-- To publish a sequence, replace its .download-button span with
+               <a class="download-button" href="...">Download</a>. -->
+          <div class="dataset-grid">
+            <article class="dataset-card">
+              <p class="step-number">SEQUENCE 01</p>
+              <h3>Dream 01</h3>
+              <p>Two agents map a shared desk.</p>
+              <span class="download-button" aria-disabled="true"
+                >Download <small>Coming soon</small></span
+              >
+            </article>
+            <article class="dataset-card">
+              <p class="step-number">SEQUENCE 02</p>
+              <h3>Dream 02</h3>
+              <p>Two agents map a second desk scene.</p>
+              <span class="download-button" aria-disabled="true"
+                >Download <small>Coming soon</small></span
+              >
+            </article>
+            <article class="dataset-card">
+              <p class="step-number">SEQUENCE 03</p>
+              <h3>Dream 03</h3>
+              <p>Three agents map an entire room.</p>
+              <span class="download-button" aria-disabled="true"
+                >Download <small>Coming soon</small></span
+              >
+            </article>
+          </div>
+          <p class="source-note dataset-note">
+            Each sequence includes per-agent RGB-D streams and ground-truth
+            trajectories. The data format, download size, and license will be
+            announced with the release.
+          </p>
+        </div>
+      </section>
       <footer>
         <div class="wrap">
           <a class="brand" href="#top">Co-GS <span>SLAM</span></a>
@@ -756,8 +820,8 @@
             Gaussian Model
           </p>
           <small
-            >ICRA 2027 submission · Paper, code, and in-house dataset coming
-            soon.</small
+            >ICRA 2027 submission · Paper, code, and
+            <a href="#dataset">in-house dataset</a> coming soon.</small
           >
         </div>
       </footer>
